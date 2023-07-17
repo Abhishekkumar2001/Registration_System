@@ -2,8 +2,17 @@
 const express = require('express');
 const port = 5000;
 
+const mongoose = require('mongoose');
+
 const app = express();
 
+
+// Connected to the database
+mongoose.connect("mongodb://127.0.0.1:27017/signupDB").then(() =>{
+    console.log("App is now connected to DB");
+}).catch((err) =>{
+    console.log(`${err}`);
+})
 
 // Listening the server
 app.listen(port, (err) =>{
