@@ -18,9 +18,17 @@ mongoose.connect("mongodb://127.0.0.1:27017/signupDB").then(() =>{
     console.log(`${err}`);
 });
 
+// middlewares
+app.use(express.json());
+app.use(express.urlencoded({
+    extended : false
+}))
+
 // import routes
 const userRoute = require('./routes/users');
 app.use('/public', userRoute);
+
+
 
 // Listening to app
 app.listen(port, (err) =>{
