@@ -17,6 +17,6 @@ const userSchema = new mongoose.Schema({
     }
 }, {timestamps : true});
 
-// To import the Schema anywhere in the project
 
+// To import the Schema anywhere in the project
 module.exports = mongoose.model("User", userSchema);

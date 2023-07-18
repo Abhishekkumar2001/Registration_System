@@ -6,6 +6,10 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+// To set up the view engine as ejs
+app.set("view engine", "ejs");
+app.set("views", "./views");
+
 
 // Connecting to the database
 mongoose.connect("mongodb://127.0.0.1:27017/signupDB").then(() =>{
