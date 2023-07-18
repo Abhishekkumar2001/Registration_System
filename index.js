@@ -16,7 +16,11 @@ mongoose.connect("mongodb://127.0.0.1:27017/signupDB").then(() =>{
     console.log("App is now connected to DB");
 }).catch((err) =>{
     console.log(`${err}`);
-})
+});
+
+// import routes
+const userRoute = require('./routes/users');
+app.use('/public', userRoute);
 
 // Listening to app
 app.listen(port, (err) =>{
