@@ -1,6 +1,10 @@
 const router = require("express").Router();
 const User = require('../models/User');
 
+const {registerValidation} = require('../validation');
+
+
+
 
 router.get('/home', (req, res) =>{
     res.render('home');
@@ -15,7 +19,10 @@ router.get('/login', (req, res) =>{
 
 // To register a user
 router.post('/register', async(req, res) =>{
+    
     //Validation the data
+    const {error} = registerValidation(req.body);
+    if(error) return res.status(400).send(error);
 
     //checking if email exists
     const emailExist = await User.findOne({email : req.body.email});
